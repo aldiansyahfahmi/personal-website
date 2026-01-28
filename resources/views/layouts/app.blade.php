@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Portfolio | Mobile Developer</title>
+    <title>Aldiansyah Fahmi</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +23,7 @@
             <div class="flex items-center justify-between h-16">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
-                    <a href="{{ route('home') }}" class="text-2xl font-bold text-primary">Aldiansyah.</a>
+                    <a href="{{ route('home') }}" class="text-2xl font-bold text-primary">Aldev();</a>
                 </div>
                 
                 <!-- Desktop Menu -->
