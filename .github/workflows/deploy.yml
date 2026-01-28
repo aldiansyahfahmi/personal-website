@@ -21,6 +21,6 @@ jobs:
             cd ~/domains/aldiansyahfahmi.com/laravel/personal-website
             git pull origin main
             composer install --no-dev --optimize-autoloader
-            rsync -av --delete public/ ~/public_html/
+            rsync -av --delete public/ ~/domains/aldiansyahfahmi.com/public_html/
             php artisan optimize:clear
             php artisan optimize
