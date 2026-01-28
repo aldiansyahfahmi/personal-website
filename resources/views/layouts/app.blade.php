@@ -28,13 +28,13 @@
                 
                 <!-- Menu (All Screens) -->
                 <div class="flex items-baseline space-x-2 sm:space-x-4 md:space-x-8">
-                    <a href="{{ route('home') }}" class="px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium {{ request()->routeIs('home') ? 'text-primary' : 'text-gray-300 hover:text-white' }} transition-colors">
+                    <a href="#home" class="nav-link px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         <span class="mr-1">🏠</span> <span class="hidden sm:inline">Home</span>
                     </a>
-                    <a href="{{ route('about') }}" class="px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium {{ request()->routeIs('about') ? 'text-primary' : 'text-gray-300 hover:text-white' }} transition-colors">
+                    <a href="#about" class="nav-link px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         <span class="mr-1">👤</span> <span class="hidden sm:inline">About</span>
                     </a>
-                    <a href="{{ route('projects') }}" class="px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium {{ request()->routeIs('projects') ? 'text-primary' : 'text-gray-300 hover:text-white' }} transition-colors">
+                    <a href="#projects" class="nav-link px-2 sm:px-3 py-2 rounded-md text-xs sm:text-sm font-medium text-gray-300 hover:text-white transition-colors">
                         <span class="mr-1">💻</span> <span class="hidden sm:inline">Projects</span>
                     </a>
                 </div>
