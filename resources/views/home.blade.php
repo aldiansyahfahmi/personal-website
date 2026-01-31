@@ -97,34 +97,16 @@
             <link rel="stylesheet" type='text/css' href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
 
             <div class="grid grid-cols-2 md:grid-cols-5 gap-6 justify-center">
-                
+                @foreach($skills as $skill)
                 <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-dart-plain text-5xl text-blue-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Dart</span>
+                    @if(str_contains($skill->icon, '<svg'))
+                        {!! $skill->icon !!}
+                    @else
+                        <i class="{{ $skill->icon }} text-5xl mb-2"></i>
+                    @endif
+                    <span class="text-lg font-medium text-gray-300">{{ $skill->name }}</span>
                 </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-flutter-plain text-5xl text-blue-400 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Flutter</span>
-                </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-firebase-plain text-5xl text-yellow-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Firebase</span>
-                </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                     <svg class="h-12 w-12 text-pink-500 mb-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-                    </svg>
-                    <span class="text-lg font-medium text-gray-300">UI/UX</span>
-                </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-git-plain text-5xl text-red-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Git</span>
-                </div>
-
+                @endforeach
             </div>
         </div>
 
@@ -134,32 +116,16 @@
                 <span class="text-primary">Tools</span> I use
             </h1>
             <div class="grid grid-cols-2 md:grid-cols-5 gap-6 justify-center">
-                
+                @foreach($tools as $tool)
                 <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-vscode-plain text-5xl text-blue-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">VS Code</span>
+                    @if(str_contains($tool->icon, '<svg'))
+                        {!! $tool->icon !!}
+                    @else
+                        <i class="{{ $tool->icon }} text-5xl mb-2"></i>
+                    @endif
+                    <span class="text-lg font-medium text-gray-300">{{ $tool->name }}</span>
                 </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-androidstudio-plain text-5xl text-green-400 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Android Studio</span>
-                </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-xcode-plain text-5xl text-blue-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Xcode</span>
-                </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-postman-plain text-5xl text-orange-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Postman</span>
-                </div>
-
-                <div class="glow-card bg-black/40 border border-primary/20 rounded-lg p-4 flex flex-col items-center justify-center hover:border-primary/60 transition-colors h-32">
-                    <i class="devicon-figma-plain text-5xl text-pink-500 mb-2"></i>
-                    <span class="text-lg font-medium text-gray-300">Figma</span>
-                </div>
-
+                @endforeach
             </div>
         </div>
 
@@ -174,50 +140,43 @@
                     <!-- Timeline Line -->
                     <div class="absolute left-0 md:left-1/2 min-h-full w-1 bg-primary/20 transform -translate-x-1/2"></div>
                     
-                    <!-- Experience Item 2 (New, Top) -->
+                    @foreach($experiences as $index => $experience)
                     <div class="relative mb-12">
                          <div class="flex flex-col md:flex-row items-center w-full">
-                            <div class="w-full md:w-1/2 p-6 md:pr-12 order-2 md:order-1"></div>
                             
-                            <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-black border-4 border-primary rounded-full z-10 order-1 md:order-2 mb-4 md:mb-0"></div>
-                            
-                            <div class="w-full md:w-1/2 p-6 md:pl-12 text-center md:text-left order-3">
-                                <h3 class="text-2xl font-bold text-white">IT Staff</h3>
-                                <h4 class="text-primary text-xl font-medium mb-2">PT. Barakah Niaga Semen</h4>
-                                 <p class="text-gray-400 mb-4 font-mono text-sm">2024 - Present</p>
-                                 <ul class="text-gray-300 space-y-2 text-base list-none">
-                                    <li>Designed UI/UX using Figma</li>
-                                    <li>Built applications from scratch using Flutter</li>
-                                    <li>Fixed bugs and maintained applications</li>
-                                    <li>Deployed apps to Play Store and App Store</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Experience Item 1 -->
-                    <div class="relative mb-12">
-                        <div class="flex flex-col md:flex-row items-center w-full">
-                            <div class="w-full md:w-1/2 p-6 md:pr-12 text-center md:text-right order-2 md:order-1">
-                                <h3 class="text-2xl font-bold text-white">Flutter Developer</h3>
-                                <h4 class="text-primary text-xl font-medium mb-2">Smart Inovasi</h4>
-                                 <p class="text-gray-400 mb-4 font-mono text-sm">2020 - Present</p>
-                                 <ul class="text-gray-300 space-y-2 text-base list-none">
-                                    <li>Designed UI/UX using Figma</li>
-                                    <li>Created app prototypes in Figma</li>
-                                    <li>Built applications from scratch using Flutter</li>
-                                    <li>Fixed bugs and maintained applications</li>
-                                    <li>Deployed apps to Play Store and App Store</li>
-                                </ul>
+                            <!-- Left Content Space -->
+                            <div class="w-full md:w-1/2 p-6 md:pr-12 {{ $index % 2 == 0 ? 'order-2 md:order-1' : 'text-center md:text-right order-2 md:order-1' }}">
+                                @if($index % 2 != 0)
+                                    <h3 class="text-2xl font-bold text-white">{{ $experience->title }}</h3>
+                                    <h4 class="text-primary text-xl font-medium mb-2">{{ $experience->company }}</h4>
+                                    <p class="text-gray-400 mb-4 font-mono text-sm">{{ $experience->duration }}</p>
+                                    <ul class="text-gray-300 space-y-2 text-base list-none">
+                                        @foreach($experience->description ?? [] as $item)
+                                        <li>{{ $item['item'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
                             </div>
                             
                             <!-- Timeline Dot -->
                             <div class="absolute left-1/2 transform -translate-x-1/2 w-8 h-8 bg-black border-4 border-primary rounded-full z-10 order-1 md:order-2 mb-4 md:mb-0"></div>
                             
-                            <div class="w-full md:w-1/2 p-6 md:pl-12 order-3"></div>
+                            <!-- Right Content Space -->
+                            <div class="w-full md:w-1/2 p-6 md:pl-12 {{ $index % 2 == 0 ? 'text-center md:text-left order-3' : 'order-3' }}">
+                                @if($index % 2 == 0)
+                                    <h3 class="text-2xl font-bold text-white">{{ $experience->title }}</h3>
+                                    <h4 class="text-primary text-xl font-medium mb-2">{{ $experience->company }}</h4>
+                                    <p class="text-gray-400 mb-4 font-mono text-sm">{{ $experience->duration }}</p>
+                                    <ul class="text-gray-300 space-y-2 text-base list-none">
+                                        @foreach($experience->description ?? [] as $item)
+                                        <li>{{ $item['item'] }}</li>
+                                        @endforeach
+                                    </ul>
+                                @endif
+                            </div>
                         </div>
                     </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -230,19 +189,19 @@
             
              <div class="flex justify-center">
                 <div class="w-full max-w-4xl grid grid-cols-1 gap-8">
-                    
+                    @foreach($education as $edu)
                     <div class="glow-card bg-black/40 border border-t-[1px] border-primary/30 rounded-xl p-8 flex flex-col md:flex-row items-center justify-between hover:bg-black/60 transition-all">
                         <div class="mb-4 md:mb-0 text-center md:text-left">
-                            <h3 class="text-2xl font-bold text-white mb-1">Universitas Teknologi Akba Makassar (UNITAMA)</h3>
-                            <p class="text-lg text-primary">Informatics Engineering</p>
+                            <h3 class="text-2xl font-bold text-white mb-1">{{ $edu->institution }}</h3>
+                            <p class="text-lg text-primary">{{ $edu->degree }}</p>
                         </div>
                         <div class="text-center md:text-right">
                              <span class="inline-block bg-primary/10 text-primary border border-primary/20 px-4 py-2 rounded-full font-mono text-sm font-bold">
-                                2018 - 2021
+                                {{ $edu->duration }}
                             </span>
                         </div>
                     </div>
-
+                    @endforeach
                 </div>
             </div>
         </div>
@@ -261,168 +220,26 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            
-            <!-- Project 1 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('med-anatomy-learning.png') }}" alt="Med Anatomy Learning FKUH" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">Med Anatomy Learning FKUH</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Aplikasi pembelajaran anatomi untuk mahasiswa kedokteran dengan fitur lembar kerja, kuis, video, dan materi PDF.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
+            @foreach($projects as $project)
+            <a href="{{ $project->url ?? '#' }}" target="{{ $project->url ? '_blank' : '_self' }}" class="group">
+                <div class="glow-card bg-dark-surface border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full transition-all duration-300 hover:border-primary/50 hover:transform hover:-translate-y-2">
+                    <div class="overflow-hidden bg-white">
+                        <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : (file_exists(public_path($project->image)) ? asset($project->image) : asset('storage/' . $project->image)) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
+                    </div>
+                    <div class="p-6 flex-grow flex flex-col">
+                        <h3 class="text-xl font-bold text-white mb-3 text-center group-hover:text-primary transition-colors">{{ $project->title }}</h3>
+                        <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
+                            {{ $project->description }}
+                        </p>
+                        <div class="flex justify-center space-x-4 mt-auto">
+                            @foreach($project->technologies ?? [] as $tech)
+                            <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">{{ $tech }}</span>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-            </div>
-
-            <!-- Project 2 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('e-logbook-profesi-fkuh.png') }}" alt="E-Logbook Profesi FKUH" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">E-Logbook Profesi FKUH</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                         Platform logbook digital untuk dokter muda (KOAS) untuk merekam kegiatan harian dan aktivitas klinis.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-             <!-- Project 3 -->
-             <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('e-logbook-profesi-unipa.png') }}" alt="E-Logbook Profesi UNIPA" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">E-Logbook Profesi UNIPA</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Aplikasi logbook khusus untuk profesional medis di UNIPA untuk memantau kemajuan klinis.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 4 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('nursing-anatomy-ebook.png') }}" alt="E-Book Anatomy Nursing" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">E-Book Anatomy Nursing</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Aplikasi pembaca e-book online yang dirancang khusus untuk buku-buku anatomi keperawatan.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 5 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('wallpaper-app.png') }}" alt="Wallpaper App" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">Wallpaper App</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Aplikasi utilitas untuk mengganti dan mengatur wallpaper layar utama dan layar kunci.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 6 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('pan-sales.png') }}" alt="PAN Sales" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">PAN Sales</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Alat manajemen penjualan untuk pelacakan lapangan, penjadwalan kunjungan toko, dan input data toko baru.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-
-            <!-- Project 7 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('presensita.png') }}" alt="Presensita" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">Presensita</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Aplikasi presensi digital untuk memudahkan pencatatan kehadiran karyawan secara real-time.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 8 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('e-logbook-prodi-s1-fkuh.png') }}" alt="E-Logbook Prodi S1 FKUH" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">E-Logbook Prodi S1 FKUH</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Platform logbook digital untuk mahasiswa S1 Fakultas Kedokteran untuk mencatat aktivitas akademik dan penelitian.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 9 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('e-logbook-ppds-tht-fkuh.png') }}" alt="E-Logbook PPDS-THT FKUH" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">E-Logbook PPDS-THT FKUH</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Aplikasi logbook khusus untuk Program Pendidikan Dokter Spesialis THT di FKUH.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Project 10 -->
-            <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
-                <div class="overflow-hidden bg-white">
-                    <img src="{{ asset('e-logbook-ppds-urologi-fkuh.png') }}" alt="E-Logbook PPDS-Urologi FKUH" class="w-full h-auto object-contain">
-                </div>
-                <div class="p-6 flex-grow flex flex-col">
-                    <h3 class="text-xl font-bold text-white mb-3 text-center">E-Logbook PPDS-Urologi FKUH</h3>
-                    <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
-                        Platform logbook untuk Program Pendidikan Dokter Spesialis Urologi di FKUH.
-                    </p>
-                    <div class="flex justify-center space-x-4 mt-auto">
-                        <span class="text-primary text-xs border border-primary/50 px-2 py-1 rounded">Flutter</span>
-                    </div>
-                </div>
-            </div>
-
+            </a>
+            @endforeach
         </div>
     </div>
 </section>
