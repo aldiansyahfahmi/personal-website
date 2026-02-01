@@ -221,12 +221,11 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             @foreach($projects as $project)
-            <a href="{{ $project->url ?? '#' }}" target="{{ $project->url ? '_blank' : '_self' }}" class="group">
-                <div class="glow-card bg-dark-surface border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full transition-all duration-300 hover:border-primary/50 hover:transform hover:-translate-y-2">
-                    <div class="overflow-hidden bg-white">
-                        <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : (file_exists(public_path($project->image)) ? asset($project->image) : asset('storage/' . $project->image)) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
-                    </div>
-                    <div class="p-6 flex-grow flex flex-col">
+             <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
+                <div class="overflow-hidden bg-white">
+                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : (file_exists(public_path($project->image)) ? asset($project->image) : asset('storage/' . $project->image)) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
+                </div>
+                <div class="p-6 flex-grow flex flex-col">
                         <h3 class="text-xl font-bold text-white mb-3 text-center group-hover:text-primary transition-colors">{{ $project->title }}</h3>
                         <p class="text-gray-400 text-sm mb-6 text-center flex-grow">
                             {{ $project->description }}
@@ -237,8 +236,7 @@
                             @endforeach
                         </div>
                     </div>
-                </div>
-            </a>
+            </div>
             @endforeach
         </div>
     </div>
