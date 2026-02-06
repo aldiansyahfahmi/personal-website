@@ -57,6 +57,22 @@
                 <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">📝</div>
                 <div class="text-sm text-gray-300">Add Experience</div>
             </a>
+            <a href="{{ route('admin.hero.edit') }}" class="p-4 bg-black/40 border border-primary/10 rounded-xl hover:border-primary/50 transition-all text-center group">
+                <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">✨</div>
+                <div class="text-sm text-gray-300">Manage Hero</div>
+            </a>
+            <a href="{{ route('admin.about.edit') }}" class="p-4 bg-black/40 border border-primary/10 rounded-xl hover:border-primary/50 transition-all text-center group">
+                <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">👤</div>
+                <div class="text-sm text-gray-300">Manage About</div>
+            </a>
+            <a href="{{ route('admin.social-links.index') }}" class="p-4 bg-black/40 border border-primary/10 rounded-xl hover:border-primary/50 transition-all text-center group">
+                <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">🔗</div>
+                <div class="text-sm text-gray-300">Social Links</div>
+            </a>
+            <a href="{{ route('admin.settings.edit') }}" class="p-4 bg-black/40 border border-primary/10 rounded-xl hover:border-primary/50 transition-all text-center group">
+                <div class="text-2xl mb-2 group-hover:scale-110 transition-transform">⚙️</div>
+                <div class="text-sm text-gray-300">Settings</div>
+            </a>
         </div>
     </div>
     
