@@ -12,7 +12,8 @@ function initTypewriter() {
     const textElement = document.getElementById('typewriter-text');
     if (!textElement) return;
 
-    const phrases = ["Flutter Developer", "Mobile App Creator", "UI/UX Enthusiast"];
+    const phrasesData = textElement.getAttribute('data-phrases');
+    const phrases = phrasesData ? JSON.parse(phrasesData) : ["Flutter Developer", "Mobile App Creator", "UI/UX Enthusiast"];
     let phraseIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
