@@ -24,7 +24,7 @@
             @foreach($projects as $project)
             <tr class="hover:bg-primary/5 transition-colors">
                 <td class="px-6 py-4 text-white">
-                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : asset($project->image) }}" class="w-20 h-12 object-cover rounded-lg bg-black/50 border border-primary/10">
+                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : (file_exists(public_path($project->image)) ? asset($project->image) : asset('storage/' . $project->image)) }}" class="w-20 h-12 object-cover rounded-lg bg-black/50 border border-primary/10">
                 </td>
                 <td class="px-6 py-4 font-medium text-white">{{ $project->title }}</td>
                 <td class="px-6 py-4">

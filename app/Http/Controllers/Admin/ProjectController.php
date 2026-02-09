@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -32,8 +33,16 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            $path = $request->file('image_file')->store('projects', 'public');
-            $validated['image'] = $path;
+            $image = $request->file('image_file');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $targetDir = public_path('storage/projects');
+            
+            if (!File::exists($targetDir)) {
+                File::makeDirectory($targetDir, 0755, true);
+            }
+            
+            $image->move($targetDir, $imageName);
+            $validated['image'] = 'storage/projects/' . $imageName;
         }
 
         if ($request->technologies) {
@@ -66,11 +75,19 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            if ($project->image) {
-                Storage::disk('public')->delete($project->image);
+            if ($project->image && File::exists(public_path($project->image))) {
+                File::delete(public_path($project->image));
             }
-            $path = $request->file('image_file')->store('projects', 'public');
-            $validated['image'] = $path;
+            $image = $request->file('image_file');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $targetDir = public_path('storage/projects');
+            
+            if (!File::exists($targetDir)) {
+                File::makeDirectory($targetDir, 0755, true);
+            }
+            
+            $image->move($targetDir, $imageName);
+            $validated['image'] = 'storage/projects/' . $imageName;
         }
 
         if ($request->technologies) {
@@ -88,8 +105,8 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        if ($project->image) {
-            Storage::disk('public')->delete($project->image);
+        if ($project->image && File::exists(public_path($project->image))) {
+            File::delete(public_path($project->image));
         }
         $project->delete();
         return redirect()->route('admin.projects.index')->with('success', 'Project deleted successfully.');
