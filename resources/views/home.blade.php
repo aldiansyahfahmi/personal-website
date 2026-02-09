@@ -37,7 +37,7 @@
                     
                     <!-- Profile Image -->
                     <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/50 shadow-[0_0_30px_rgba(74,222,128,0.3)] animate-[float_6s_ease-in-out_infinite]">
-                        <img src="{{ Str::startsWith($profileImage, 'http') ? $profileImage : (file_exists(public_path('storage/' . $profileImage)) ? asset('storage/' . $profileImage) : asset($profileImage)) }}" alt="{{ $hero->name }}" class="w-full h-full object-cover">
+                        <img src="{{ Str::startsWith($profileImage, 'http') ? $profileImage : asset('storage/' . $profileImage) }}" alt="{{ $hero->name }}" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
