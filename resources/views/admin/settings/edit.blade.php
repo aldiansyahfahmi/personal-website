@@ -18,7 +18,7 @@
                     <div class="relative w-24 h-24 rounded-full overflow-hidden border-2 border-primary/50">
                         @php
                             $profileImage = \App\Models\Setting::get('profile_image', 'profile.jpg');
-                            $imageSrc = Str::startsWith($profileImage, 'http') ? $profileImage : (file_exists(public_path('storage/' . $profileImage)) ? asset('storage/' . $profileImage) : asset($profileImage));
+                            $imageSrc = Str::startsWith($profileImage, 'http') ? $profileImage : (file_exists(public_path('storage/public/' . $profileImage)) ? asset('storage/public/' . $profileImage) : asset($profileImage));
                         @endphp
                         <img src="{{ $imageSrc }}" alt="Current Profile" class="w-full h-full object-cover">
                     </div>

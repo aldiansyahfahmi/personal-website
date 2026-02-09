@@ -45,7 +45,7 @@
                 <label class="block text-gray-300 mb-2 font-medium">Project Image</label>
                 @if($project->image)
                 <div class="mb-4">
-                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : asset('storage/' . $project->image) }}" class="w-40 h-24 object-cover rounded-lg border border-primary/20">
+                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : asset('storage/public/' . $project->image) }}" class="w-40 h-24 object-cover rounded-lg border border-primary/20">
                     <p class="text-xs text-gray-500 mt-1">Current Image</p>
                 </div>
                 @endif

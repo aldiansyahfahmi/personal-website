@@ -37,7 +37,7 @@
                     
                     <!-- Profile Image -->
                     <div class="relative w-full h-full rounded-full overflow-hidden border-4 border-primary/50 shadow-[0_0_30px_rgba(74,222,128,0.3)] animate-[float_6s_ease-in-out_infinite]">
-                        <img src="{{ Str::startsWith($profileImage, 'http') ? $profileImage : asset('storage/' . $profileImage) }}" alt="{{ $hero->name }}" class="w-full h-full object-cover">
+                        <img src="{{ Str::startsWith($profileImage, 'http') ? $profileImage : asset('storage/public/' . $profileImage) }}" alt="{{ $hero->name }}" class="w-full h-full object-cover">
                     </div>
                 </div>
             </div>
@@ -214,7 +214,7 @@
             @foreach($projects as $project)
              <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
                 <div class="overflow-hidden bg-white">
-                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
+                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : asset('storage/public/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
                 </div>
                 <div class="p-6 flex-grow flex flex-col">
                         @if($project->url && $project->url !== '')
