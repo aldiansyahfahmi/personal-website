@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class SettingController extends Controller
 {
@@ -21,14 +22,20 @@ class SettingController extends Controller
 
     public function update(Request $request)
     {
-        if ($request->hasFile('profile_image')) {
-            $path = $request->file('profile_image')->store('public/images');
-            // Store relative path for storage link (e.g., images/filename.jpg)
-            $filename = str_replace('public/', '', $path);
-            Setting::set('profile_image', $filename, 'image');
-        }
+        $request->validate([
+            'profile_image' => 'nullable|image|max:2048',
+        ]);
 
-        // Add other settings here if needed
+        if ($request->hasFile('profile_image')) {
+            // Delete old image if it exists
+            $oldImage = Setting::get('profile_image');
+            if ($oldImage && $oldImage !== 'profile.jpg' && !Str::startsWith($oldImage, 'http')) {
+                Storage::disk('public')->delete($oldImage);
+            }
+
+            $path = $request->file('profile_image')->store('images', 'public');
+            Setting::set('profile_image', $path, 'image');
+        }
 
         return redirect()->route('admin.settings.edit')->with('success', 'Settings updated successfully!');
     }
