@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Project;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
@@ -33,11 +32,7 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            $image = $request->file('image_file');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            
-            // Store image in storage/app/public/projects
-            $path = $image->storeAs('projects', $imageName, 'public');
+            $path = $request->file('image_file')->store('projects', 'public');
             $validated['image'] = $path;
         }
 
@@ -71,16 +66,10 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            // Delete old image if exists
-            if ($project->image && Storage::disk('public')->exists($project->image)) {
+            if ($project->image) {
                 Storage::disk('public')->delete($project->image);
             }
-            
-            $image = $request->file('image_file');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            
-            // Store image in storage/app/public/projects
-            $path = $image->storeAs('projects', $imageName, 'public');
+            $path = $request->file('image_file')->store('projects', 'public');
             $validated['image'] = $path;
         }
 
@@ -99,8 +88,7 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        // Delete image if exists
-        if ($project->image && Storage::disk('public')->exists($project->image)) {
+        if ($project->image) {
             Storage::disk('public')->delete($project->image);
         }
         
