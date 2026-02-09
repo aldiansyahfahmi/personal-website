@@ -35,14 +35,10 @@ class ProjectController extends Controller
         if ($request->hasFile('image_file')) {
             $image = $request->file('image_file');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $targetDir = public_path('storage/projects');
             
-            if (!File::exists($targetDir)) {
-                File::makeDirectory($targetDir, 0755, true);
-            }
-            
-            $image->move($targetDir, $imageName);
-            $validated['image'] = 'storage/projects/' . $imageName;
+            // Store image in storage/app/public/projects
+            $path = $image->storeAs('projects', $imageName, 'public');
+            $validated['image'] = $path;
         }
 
         if ($request->technologies) {
@@ -75,19 +71,17 @@ class ProjectController extends Controller
         ]);
 
         if ($request->hasFile('image_file')) {
-            if ($project->image && File::exists(public_path($project->image))) {
-                File::delete(public_path($project->image));
+            // Delete old image if exists
+            if ($project->image && Storage::disk('public')->exists($project->image)) {
+                Storage::disk('public')->delete($project->image);
             }
+            
             $image = $request->file('image_file');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $targetDir = public_path('storage/projects');
             
-            if (!File::exists($targetDir)) {
-                File::makeDirectory($targetDir, 0755, true);
-            }
-            
-            $image->move($targetDir, $imageName);
-            $validated['image'] = 'storage/projects/' . $imageName;
+            // Store image in storage/app/public/projects
+            $path = $image->storeAs('projects', $imageName, 'public');
+            $validated['image'] = $path;
         }
 
         if ($request->technologies) {
@@ -105,9 +99,11 @@ class ProjectController extends Controller
 
     public function destroy(Project $project)
     {
-        if ($project->image && File::exists(public_path($project->image))) {
-            File::delete(public_path($project->image));
+        // Delete image if exists
+        if ($project->image && Storage::disk('public')->exists($project->image)) {
+            Storage::disk('public')->delete($project->image);
         }
+        
         $project->delete();
         return redirect()->route('admin.projects.index')->with('success', 'Project deleted successfully.');
     }

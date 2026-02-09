@@ -214,7 +214,7 @@
             @foreach($projects as $project)
              <div class="glow-card bg-black/40 border border-primary/20 rounded-xl overflow-hidden shadow-lg flex flex-col h-full">
                 <div class="overflow-hidden bg-white">
-                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : (file_exists(public_path($project->image)) ? asset($project->image) : asset('storage/' . $project->image)) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
+                    <img src="{{ Str::startsWith($project->image, 'http') ? $project->image : asset('storage/' . $project->image) }}" alt="{{ $project->title }}" class="w-full h-auto object-contain transition-transform duration-500 group-hover:scale-110">
                 </div>
                 <div class="p-6 flex-grow flex flex-col">
                         @if($project->url && $project->url !== '')
