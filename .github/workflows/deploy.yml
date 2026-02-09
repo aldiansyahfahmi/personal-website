@@ -21,5 +21,6 @@ jobs:
             cd ~/domains/aldiansyahfahmi.com/sites/personal_website
             git pull origin main
             composer install --no-dev --optimize-autoloader
+            php artisan storage:link
             php artisan optimize:clear
             php artisan optimize
